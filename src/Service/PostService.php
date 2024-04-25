@@ -48,7 +48,6 @@ class PostService
         $existingTitles = array_column($this->entityManager->createQueryBuilder()->select('p.title')->from(Post::class, 'p')->getQuery()->getResult(), 'title');
         foreach ($posts as $post) {
             if (!in_array($post['title'], $existingTitles)) {
-                print_r($post['title']);
                 $postEntity = new Post();
                 $postEntity->setTitle($post['title']);
                 $postEntity->setBody($post['body']);
